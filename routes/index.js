@@ -11,6 +11,7 @@ fs.readdirSync(__dirname)
         return file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js';
     })
     .forEach(file => {
+        //將所有路由匯入，並將 Route 實體傳入類別中，使其能進行註冊。
         const route = require(path.join(__dirname, file));
         route.define(router);
     });

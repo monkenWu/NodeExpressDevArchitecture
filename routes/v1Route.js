@@ -8,11 +8,9 @@ class v1Route{
      * Define V1 api routes
      * 
      * @param {import('express').Router} router 
-     * @returns {import('express').Router}
      */
     define(router){
         router.get('/api/v1', this.indexController.indexPage);
-
 
         console.log('Api v1 route defined.');
     }

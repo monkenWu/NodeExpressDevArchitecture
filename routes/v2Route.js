@@ -5,10 +5,9 @@ class v2Route{
     }
 
     /**
-     * Define V1 api routes
+     * Define V2 api routes
      * 
      * @param {import('express').Router} router 
-     * @returns {import('express').Router}
      */
     define(router){
         router.get('/api/v2', this.indexController.indexPage);
