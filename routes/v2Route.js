@@ -1,20 +1,10 @@
-class v2Route{
+const routeErrorHandler = require('../system/RouteErrorHandler');
+const indexController = require('../controller/v2/IndexController');
 
-    constructor(){
-        this.indexController = require('../controller/v2/indexController');
-    }
+/**
+ * @param {import('express').Router} router 
+ */
+module.exports = (router) => {
+    router.get('/api/v2', routeErrorHandler(indexController.indexPage));
 
-    /**
-     * Define V2 api routes
-     * 
-     * @param {import('express').Router} router 
-     */
-    define(router){
-        router.get('/api/v2', this.indexController.indexPage);
-
-
-        console.log('Api v1 route defined.');
-    }
-}
-
-module.exports = new v2Route();
+};

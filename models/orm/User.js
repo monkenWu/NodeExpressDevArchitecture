@@ -1,8 +1,9 @@
 /**
  * 定義 User 模型
+ * 
  * @param {import('sequelize').Sequelize} sequelize
  * @param {import('sequelize').DataTypes} DataTypes
- * @returns {import('sequelize').Model}
+ * @returns {import('sequelize').ModelCtor}
  */
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
@@ -21,7 +22,9 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
     }, {
-        //其他選項
+        timestamps: true,
+        createdAt: 'created_at',
+        updatedAt: 'updated_at',
     });
 
     // 定義關聯

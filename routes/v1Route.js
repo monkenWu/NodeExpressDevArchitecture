@@ -1,19 +1,15 @@
-class v1Route{
+const routeErrorHandler = require('../system/RouteErrorHandler');
+const indexController = require('../controller/v1/IndexController');
+const userController = require('../controller/v1/UserController');
+const jwtMiddleware = require('./middleware/jwtMiddleware');
 
-    constructor(){
-        this.indexController = require('../controller/v1/indexController');
-    }
+/**
+ * @param {import('express').Router} router 
+ */
+module.exports = (router) => {
+    router.get('/api/v1', routeErrorHandler(indexController.indexPage));
 
-    /**
-     * Define V1 api routes
-     * 
-     * @param {import('express').Router} router 
-     */
-    define(router){
-        router.get('/api/v1', this.indexController.indexPage);
-
-        console.log('Api v1 route defined.');
-    }
-}
-
-module.exports = new v1Route();
+    router.post('/api/v1/user', routeErrorHandler(userController.register));
+    router.post('/api/v1/user/login', routeErrorHandler(userController.login));
+    router.get('/api/v1/user', jwtMiddleware, routeErrorHandler(userController.getUserInfo));
+};

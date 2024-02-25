@@ -16,5 +16,6 @@ RUN TZ=Asia/Taipei \
 WORKDIR /app
 ADD . /app
 RUN npm install
+# RUN npm install --only=prod
 
 CMD tail -f /dev/null
