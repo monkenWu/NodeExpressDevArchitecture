@@ -2,12 +2,14 @@ const WalletService = require('../services/WalletService');
 const UserService = require('../services/UserService');
 const ValidationError = require('../system/exceptions/ValidationError');
 
-let walletService = new WalletService();
-let userService = new UserService();
-
 describe('WalletService with actual database',() => {
 
+    let walletService;
+    let userService;
+
     beforeAll(async () => {
+        walletService = new WalletService();
+        userService = new UserService();
         await userService.register('walletUser', 'password');
         await userService.register('targetWalletUser', 'password');
     });
