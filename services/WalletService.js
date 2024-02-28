@@ -82,11 +82,16 @@ class WalletService {
         if (amount <= 0) {
             throw new ValidationError('Amount must be greater than 0');
         }
-        const wallet = await this.walletDao.getWalletInfo(userId, false);
+
+        const [wallet, targetWallet] = await Promise.all([
+            this.walletDao.getWalletInfo(userId, false),
+            this.walletDao.getWalletInfo(targetUserId, false)
+        ]);
+        
         if (wallet.balance < amount) {
             throw new ValidationError('Insufficient balance');
         }
-        const targetWallet = await this.walletDao.getWalletInfo(targetUserId, false);
+        
         await this.walletDao.recordTransaction(wallet.id, WalletDao.TRANS_TRANSFER, amount, targetWallet.id);
     }
 }
