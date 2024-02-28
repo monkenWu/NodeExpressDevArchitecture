@@ -1,14 +1,14 @@
 const UserService = require('../services/UserService');
 const ValidationError = require('../system/exceptions/ValidationError');
 
-let userService = new UserService();
-
 describe('UserService with actual database', () => {
 
     const baseUserNanme = 'testuser';
     const basePassword = 'password123';
+    let userService;
 
     test('should create a user', async () => {
+        userService = new UserService();
         await userService.register(baseUserNanme, basePassword);
         const user = await userService.getUserInfo(baseUserNanme);
 
