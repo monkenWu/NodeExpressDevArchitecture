@@ -6,7 +6,6 @@ const basename = path.basename(__filename);
 const db = {};
 
 const DbConnection = require('../../system/DbConnection');
-DbConnection.getEngine(DbConnection.bankDB);
 let sequelize = DbConnection.getEngine();
 
 fs.readdirSync(__dirname)
