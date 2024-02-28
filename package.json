@@ -28,9 +28,12 @@
     "sequelize-cli": "^6.6.2"
   },
   "jest": {
+    "verbose": true,
     "testMatch": [
       "**/tests/**/*.js",
-      "**/?(*.)+test.js"
-    ]
+      "**/?(*.)+test.js"  
+    ],
+    "globalSetup": "./system/test/GlobalStart.js",
+    "globalTeardown": "./system/test/GlobalEnd.js"
   }
 }

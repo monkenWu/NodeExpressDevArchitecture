@@ -1,18 +1,7 @@
-const e = require('express');
 const UserService = require('../services/UserService');
 const ValidationError = require('../system/exceptions/ValidationError');
-const {umzug, DbConnection} = require('../system/test/BaseTest');
 
 let userService = new UserService();
-
-beforeAll(async () => {
-    await umzug.up();
-});
-
-afterAll(async () => {
-    await umzug.down({to: 0});
-    await DbConnection.closeConnection();
-});
 
 describe('UserService with actual database', () => {
 

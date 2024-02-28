@@ -19,7 +19,8 @@ class DbConnection {
         console.log(`Database Driver: ${dbData.dialect} Storage: ${dbData.storage}`);
         const sequelize = new Sequelize({
             dialect: dbData.dialect,
-            storage: dbData.storage
+            storage: dbData.storage,
+            logging: process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'production' ? false : console.log,
         });
         this.engine = sequelize;
         return this.engine;

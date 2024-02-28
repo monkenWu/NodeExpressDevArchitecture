@@ -18,6 +18,7 @@ const umzug = new Umzug({
     },
     context: sequelize.getQueryInterface(),
     storage: new SequelizeStorage({ sequelize }),
+    logger: null,
 });
 
 module.exports = {
@@ -26,3 +27,12 @@ module.exports = {
     Sequelize,
     DbConnection
 }
+
+// beforeAll(async () => {
+//     await umzug.up();
+// });
+
+// afterAll(async () => {
+//     await umzug.down({to: 0});
+//     // await DbConnection.closeConnection();
+// });
