@@ -40,6 +40,9 @@ class UserService {
             return {
                 id: user.id,
                 username: user.username,
+                wallet: {
+                    balance: user.wallet.balance
+                }
             };
         }
         return null;

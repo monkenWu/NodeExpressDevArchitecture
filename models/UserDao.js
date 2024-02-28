@@ -2,6 +2,7 @@ class UserDao {
 
     constructor() {
         this.user = require('./orm').User;
+        this.wallet = require('./orm').Wallet;
     }
 
     /**
@@ -12,13 +13,23 @@ class UserDao {
      * @returns 
      */
     async createUser(username, hashedPassword) {
+        const transaction = await this.user.sequelize.transaction();
         try {
             const user = await this.user.create({
                 username,
                 password: hashedPassword,
-            });
+            }, { transaction });
+
+            await this.wallet.create({
+                user_id: user.id,
+                balance: 0
+            }, { transaction });
+
+            await transaction.commit();
             return user;
         } catch (error) {
+            await transaction.rollback();
+            
             console.error('Error creating user:', error);
             throw error;
         }
@@ -34,6 +45,10 @@ class UserDao {
         try {
             const user = await this.user.findOne({
                 where: { username },
+                include: {
+                    model: this.wallet,
+                    as: 'wallet',
+                }
             });
             return user;
         } catch (error) {
@@ -49,7 +64,13 @@ class UserDao {
      */
     async findById(id) {
         try {
-            const user = await User.findByPk(id);
+            const user = await User.findByPk({
+                where: { id },
+                include: {
+                    model: Wallet,
+                    as: 'wallet',
+                }
+            });
             return user;
         } catch (error) {
             console.error('Error finding user by ID:', error);

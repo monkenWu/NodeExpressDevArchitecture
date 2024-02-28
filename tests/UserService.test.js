@@ -1,3 +1,4 @@
+const e = require('express');
 const UserService = require('../services/UserService');
 const ValidationError = require('../system/exceptions/ValidationError');
 const {umzug, DbConnection} = require('../system/test/BaseTest');
@@ -5,11 +6,11 @@ const {umzug, DbConnection} = require('../system/test/BaseTest');
 let userService = new UserService();
 
 beforeAll(async () => {
-    await umzug.down(-1);
     await umzug.up();
 });
 
 afterAll(async () => {
+    await umzug.down({to: 0});
     await DbConnection.closeConnection();
 });
 
@@ -19,11 +20,14 @@ describe('UserService with actual database', () => {
     const basePassword = 'password123';
 
     test('should create a user', async () => {
-        const user = await userService.register(baseUserNanme, basePassword);
+        await userService.register(baseUserNanme, basePassword);
+        const user = await userService.getUserInfo(baseUserNanme);
 
         expect(user).toBeTruthy();
         expect(user.username).toBe(baseUserNanme);
         expect(user.password).not.toBe(basePassword);
+        expect(user.wallet).toBeTruthy();
+        expect(user.wallet.balance).toBe(0);
     });
 
     test('should not create a user with the same username', async () => {
