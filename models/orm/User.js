@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
     }, {
+        tableName: 'users',
         timestamps: true,
         createdAt: 'created_at',
         updatedAt: 'updated_at',
@@ -29,7 +30,10 @@ module.exports = (sequelize, DataTypes) => {
 
     // 定義關聯
     User.associate = function (models) {
-
+        User.hasOne(models.Wallet, {
+            foreignKey: 'user_id',
+            as: 'wallet',
+        });
     };
 
     return User;
