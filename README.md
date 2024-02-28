@@ -52,6 +52,18 @@
 docker-compose build
 ```
 
+## Test
+
+本專案使用 `Jest` 進行測試，你可以在 `./test` 資料夾中找到所有的測試檔案。請確保你的測試檔案名稱以 `.test.js` 結尾。
+
+專案根目錄中的 `.test.env` 檔案是用來設定測試環境的組態。
+
+你可以透過下列指令來執行測試：
+
+```bash
+npm run test
+```
+
 ## Route
 
 專案中的路由設定集中在 `Route` 資料夾底下， `index.js` 會自動掃描同層資料夾下的所有 `.js` 檔案進行路由的註冊。
@@ -86,4 +98,3 @@ npx sequelize-cli migration:generate --name {migration-name}
 ```bash
 npx sequelize-cli db:migrate
 ```
-

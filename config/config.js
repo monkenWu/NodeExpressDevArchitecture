@@ -1,4 +1,3 @@
-require('dotenv').config();
 const path = require('path');
 
 let dbDriver = process.env.DB_DRIVER;
