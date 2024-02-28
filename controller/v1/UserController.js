@@ -47,7 +47,9 @@ class UserController {
      * @param {import('express').Response} res 
      */
     async getUserInfo(req, res) {
-        return res.json(req.auth);
+        const { username } = req.params;
+        const user = await this.userService.getUserInfo(username);
+        return res.json(user);
     }
 }
 
