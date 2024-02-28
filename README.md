@@ -48,7 +48,10 @@
     docker-compose exec app bash
     ```
     > 你也可以透過 VSCode 的 Remote - Containers 擴充套件進入容器開發
-
+* 初始化開發環境依賴
+   ```bash
+   npm install
+   ```
 * 將 `env.example` 複製成 `.env` 並調整組態設定使其符合需求
 * 初始化資料庫
     ```bash
