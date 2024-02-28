@@ -13,13 +13,105 @@
 					"name": "User",
 					"item": [
 						{
+							"name": "Wallet",
+							"item": [
+								{
+									"name": "Wallet Blance",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNzA5MTIxMDIxLCJleHAiOjE3MTI3MjEwMjF9.JBHIhpTIfIyEBDZxhi8Q52ke3yJIuzbeNbr15m-FCYQ"
+											}
+										},
+										"method": "GET",
+										"header": [],
+										"url": "{{server_endpoint}}/api/v1/user/test_user/wallet"
+									},
+									"response": []
+								},
+								{
+									"name": "Wallet Deposit",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0X3VzZXIiLCJpYXQiOjE3MDkxMTYzMjYsImV4cCI6MTcxMjcxNjMyNn0.DiuFRicPaj5-VoNc6rCCHFZABXoXGpT5R1y5SZI_rMI"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"amount\" : 5000\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{server_endpoint}}/api/v1/user/test_user/wallet/deposit"
+									},
+									"response": []
+								},
+								{
+									"name": "Wallet Withdraw",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0X3VzZXIiLCJpYXQiOjE3MDkxMTYzMjYsImV4cCI6MTcxMjcxNjMyNn0.DiuFRicPaj5-VoNc6rCCHFZABXoXGpT5R1y5SZI_rMI"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"amount\" : 250\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{server_endpoint}}/api/v1/user/test_user/wallet/withdraw"
+									},
+									"response": []
+								},
+								{
+									"name": "Wallet Transfer",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0X3VzZXIiLCJpYXQiOjE3MDkxMTYzMjYsImV4cCI6MTcxMjcxNjMyNn0.DiuFRicPaj5-VoNc6rCCHFZABXoXGpT5R1y5SZI_rMI"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"amount\" : 250,\n    \"targetUserName\" : \"test\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{server_endpoint}}/api/v1/user/test_user/wallet/transfer"
+									},
+									"response": []
+								}
+							]
+						},
+						{
 							"name": "Create",
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\" : \"test\",\n    \"password\" : \"test\"\n}",
+									"raw": "{\n    \"username\" : \"test_user\",\n    \"password\" : \"test\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -37,7 +129,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\" : \"test\",\n    \"password\" : \"test\"\n}",
+									"raw": "{\n    \"username\" : \"test_user\",\n    \"password\" : \"test\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -54,12 +146,12 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNzA4ODc0NzUwLCJleHAiOjE3MDg4NzgzNTB9.62wHOH3eTl2H5R5NRpsvooMqbvyMlzxP68UmNCy89A4"
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0X3VzZXIiLCJpYXQiOjE3MDkxMTYzMjYsImV4cCI6MTcxMjcxNjMyNn0.DiuFRicPaj5-VoNc6rCCHFZABXoXGpT5R1y5SZI_rMI"
 									}
 								},
 								"method": "GET",
 								"header": [],
-								"url": "{{server_endpoint}}/api/v1/user"
+								"url": "{{server_endpoint}}/api/v1/user/test_user"
 							},
 							"response": []
 						}
