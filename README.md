@@ -1,16 +1,31 @@
 # NodeExpressDevArchitecture
 
-這是一個基於 Express 的 API 伺服器開發架構示範
+這是一個基於 Express 的 API 伺服器開發架構示範，本專案整合了以下程式庫與提供特性：
+
+* Express.js - Web 應用框架
+* Sequelize - ORM
+* SQLite3 - 開發時使用的資料庫
+* dotenv - 環境變數管理
+* express-jwt 和 jsonwebtoken - 用於建構 JWT 驗證流程
+* JEST - 測試框架
+* nodemon - 開發時自動重啟應用
+* sequelize-cli - 資料庫 Migration
+* winston - 日誌記錄
 
 ## Feature
 
 在專案內已包含了一些 APIs 與相關的測試，你可以透過在啟動開發環境後進行基本的測試。你可以在專案根目錄中找到 `APIs.postman_collection.json` 檔案，這是一個 Postman Collection 檔案，你可以透過 Postman 進行 API 測試，這些 API 在設計上依循 RESTful API 的設計原則。
 
 在專案內提供以下的功能模組：
-* 使用者
+* User
     * 註冊
     * 登入 - 取得 Access Token
     * 取得使用者資訊
+* Wallet
+    * 資訊(餘額與交易記錄)
+    * 儲值
+    * 提領
+    * 轉帳
 
 ## 環境
 
@@ -56,7 +71,7 @@ docker-compose build
 
 本專案使用 `Jest` 進行測試，你可以在 `./test` 資料夾中找到所有的測試檔案。請確保你的測試檔案名稱以 `.test.js` 結尾。
 
-專案根目錄中的 `.test.env` 檔案是用來設定測試環境的組態。
+專案根目錄中的 `.test.env` 檔案用來設定測試環境的組態。
 
 你可以透過下列指令來執行測試：
 
